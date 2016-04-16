@@ -1,0 +1,67 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.wildfly.swarm:wildfly-swarm-plugin:1.0.0.Beta7"
+    }
+}
+
+group 'com.matthewcasperson'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'war'
+apply plugin: 'wildfly-swarm'
+
+sourceCompatibility = 1.8
+
+def swarmVersion = '1.0.0.Beta7'
+def camelVersion = '2.17.0'
+def camelRestVersion = '1.6.4'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+        url 'http://repository.jboss.org/nexus/content/groups/public-jboss'
+    }
+    maven {
+        url 'https://maven.repository.redhat.com/nexus/content/repositories/public'
+    }
+}
+
+/*
+    Fix this error:
+    Could not determine artifacts for org.springframework:spring:3.0.0.M3
+ */
+configurations {
+    all*.exclude group: 'org.springframework', module: 'spring'
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    compile 'com.sun.xml.bind:jaxb-core:2.2.11'
+    compile 'com.sun.xml.bind:jaxb-impl:2.2.11'
+
+    compile 'org.wildfly.swarm:bootstrap:' + swarmVersion
+    compile 'org.wildfly.swarm:undertow:' + swarmVersion
+    compile 'org.wildfly.swarm:weld:' + swarmVersion
+    compile 'org.wildfly.swarm:swagger-webapp:' + swarmVersion
+
+    compile 'org.apache.camel:camel-core:' + camelVersion
+    compile 'org.apache.camel:camel-servletlistener:' + camelVersion
+    compile 'org.apache.camel:camel-servlet:' + camelVersion
+    compile 'org.apache.camel:camel-cdi:' + camelVersion
+    compile 'org.apache.camel:camel-spring:' + camelVersion
+    compile 'org.apache.camel:camel-swagger-java:' + camelVersion
+
+    compile 'org.apache.camel:camel-rest:' + camelRestVersion
+}
+
+// For heroku
+task stage {
+    dependsOn build
+}

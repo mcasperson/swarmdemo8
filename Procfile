@@ -1,0 +1,1 @@
+web: java -Xmx96m -Xss256k -Dfile.encoding=UTF-8 -XX:MaxMetaspaceSize=64m -Dswarm.http.port=$PORT -jar build/libs/swarmdemo6-swarm.jar
