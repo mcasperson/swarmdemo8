@@ -40,7 +40,7 @@ class MyRoute extends RouteBuilder {
                 .param()
                     .name("name")
                     .type(RestParamType.query)
-                    .description("The name to be displayed in the ourput of this request")
+                    .description("The name to be displayed in the output of this request")
                     .endParam()
                 /*
                     We produce plain text

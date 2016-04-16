@@ -34,7 +34,7 @@ public class RestConfiguration extends RouteBuilder {
                 /*
                     Define some metadata about our api
                  */
-                .apiProperty("api.title", "WildFly Swarm Camrl REST API")
+                .apiProperty("api.title", "WildFly Swarm Camel REST API")
                 .apiProperty("api.version", "1.2.3")
                 .apiProperty("base.path", "/camel")
                 /*
