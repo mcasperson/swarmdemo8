@@ -2,6 +2,7 @@ package com.matthewcasperson.swarmdemo;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
+import org.apache.camel.model.rest.RestParamType;
 
 import javax.ws.rs.core.MediaType;
 
@@ -13,36 +14,12 @@ class MyRoute extends RouteBuilder {
     @Override
     public void configure() {
         /*
-            Configure we want to use servlet as the component for the rest DSL
-            and we enable json binding mode
-         */
-        restConfiguration()
-                /*
-                    integrate the rest dsl to the servlet component
-                 */
-                .component("servlet")
-                /*
-                    default to json
-                 */
-                .bindingMode(RestBindingMode.json)
-                /*
-                    and output using pretty print
-                 */
-                .dataFormatProperty("prettyPrint", "true")
-                /*
-                    add swagger api-doc out of the box
-                  */
-                .apiContextPath("/api-docs")
-                .apiProperty("api.title", "User API").apiProperty("api.version", "1.2.3")
-                /*
-                    and enable CORS
-                  */
-                .apiProperty("cors", "true");
-
-        /*
             Create a rest endpoint
          */
         rest("/hello")
+                /*
+                    This is used by the swagger docs generator
+                 */
                 .description("An example of the Camel REST DSL")
                 /*
                     We are returning plain text, so don't use the default binding
@@ -57,6 +34,14 @@ class MyRoute extends RouteBuilder {
                     This is used by the swagger docs generator
                  */
                 .description("A simple get endpoint with the REST DSL")
+                /*
+                    Document our query param
+                 */
+                .param()
+                    .name("name")
+                    .type(RestParamType.query)
+                    .description("The name to be displayed in the ourput of this request")
+                    .endParam()
                 /*
                     We produce plain text
                  */
