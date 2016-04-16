@@ -49,7 +49,7 @@ dependencies {
     compile 'org.wildfly.swarm:bootstrap:' + swarmVersion
     compile 'org.wildfly.swarm:undertow:' + swarmVersion
     compile 'org.wildfly.swarm:weld:' + swarmVersion
-    compile 'org.wildfly.swarm:swagger-webapp-ui:' + swarmVersion
+    compile 'org.wildfly.swarm:swagger-ui:' + swarmVersion
 
     compile 'org.apache.camel:camel-core:' + camelVersion
     compile 'org.apache.camel:camel-servletlistener:' + camelVersion

@@ -32,7 +32,7 @@ class MyRoute extends RouteBuilder {
                 /*
                     add swagger api-doc out of the box
                   */
-                .apiContextPath("/api-doc")
+                .apiContextPath("/api-docs")
                 .apiProperty("api.title", "User API").apiProperty("api.version", "1.2.3")
                 /*
                     and enable CORS
@@ -50,13 +50,17 @@ class MyRoute extends RouteBuilder {
                  */
                 .bindingMode(RestBindingMode.off)
                 /*
-                    We produce plain text
-                 */
-                .produces(MediaType.TEXT_PLAIN)
-                /*
                     response to get requests
                  */
                 .get()
+                /*
+                    This is used by the swagger docs generator
+                 */
+                .description("A simple get endpoint with the REST DSL")
+                /*
+                    We produce plain text
+                 */
+                .produces(MediaType.TEXT_PLAIN)
                 /*
                     embed a camel route in rest dsl
                  */
