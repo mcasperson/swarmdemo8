@@ -17,7 +17,7 @@ apply plugin: 'wildfly-swarm'
 
 sourceCompatibility = 1.8
 
-def swarmVersion = '1.0.0.Beta7'
+def swarmVersion = '1.0.0.Beta4'
 def camelVersion = '2.17.0'
 def camelRestVersion = '1.6.4'
 
@@ -49,7 +49,7 @@ dependencies {
     compile 'org.wildfly.swarm:bootstrap:' + swarmVersion
     compile 'org.wildfly.swarm:undertow:' + swarmVersion
     compile 'org.wildfly.swarm:weld:' + swarmVersion
-    compile 'org.wildfly.swarm:swagger-webapp:' + swarmVersion
+    compile 'org.wildfly.swarm:swagger-webapp-ui:' + swarmVersion
 
     compile 'org.apache.camel:camel-core:' + camelVersion
     compile 'org.apache.camel:camel-servletlistener:' + camelVersion

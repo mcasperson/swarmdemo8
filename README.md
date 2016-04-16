@@ -1,7 +1,7 @@
 Compile and run with:
 
 ```
-./gradlew clean build; java -jar build/libs/swarmdemo7-swarm.jar
+./gradlew clean build; java -jar build/libs/swarmdemo8-swarm.jar
 ```
 
 Test the camel route with:
